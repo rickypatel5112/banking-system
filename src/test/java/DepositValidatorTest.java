@@ -7,11 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class DepositValidatorTest {
 
     private DepositValidator depositValidator;
-    private Bank bank;
 
     @BeforeEach
     public void setUp() {
-        depositValidator = new DepositValidator(bank);
+        depositValidator = new DepositValidator();
     }
 
     @Test

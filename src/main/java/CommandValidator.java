@@ -5,6 +5,9 @@ public class CommandValidator {
         this.bank = bank;
     }
 
+    CommandValidator() {
+    }
+
     public boolean validate(String command) {
         return false;
     }

@@ -1,6 +1,5 @@
 public class DepositValidator extends CommandValidator {
-    DepositValidator(Bank bank) {
-        super(bank);
+    DepositValidator() {
     }
 
     @Override
