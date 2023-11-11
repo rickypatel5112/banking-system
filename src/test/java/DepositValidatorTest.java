@@ -75,8 +75,14 @@ public class DepositValidatorTest {
     }
 
     @Test
-    public void amount_to_be_deposited_contains_alpha_numeric_charcters() {
+    public void amount_to_be_deposited_contains_alpha_numeric_characters() {
         boolean actual = depositValidator.validate("deposit 43848392 4o0");
+        assertFalse(actual);
+    }
+
+    @Test
+    public void order_of_arguments_is_different_in_command() {
+        boolean actual = depositValidator.validate("deposit 300 39285748");
         assertFalse(actual);
     }
 }
