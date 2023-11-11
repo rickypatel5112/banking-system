@@ -30,10 +30,8 @@ public class CommandValidator {
             return true;
         } else if (accountType.equalsIgnoreCase("savings")) {
             return true;
-        } else if (accountType.equalsIgnoreCase("cd")) {
-            return true;
         } else {
-            return false;
+            return accountType.equalsIgnoreCase("cd");
         }
     }
 
@@ -45,11 +43,7 @@ public class CommandValidator {
             return false;
         }
 
-        if (apr < 0 || apr > 10) {
-            return false;
-        }
-
-        return true;
+        return !(apr < 0) && !(apr > 10);
     }
 
 }
