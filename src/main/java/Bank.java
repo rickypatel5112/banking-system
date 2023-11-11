@@ -32,4 +32,13 @@ public class Bank {
 	public void withdrawMoneyByID(String id, double amount) {
 		accounts.get(id).withdrawMoney(amount);
 	}
+
+	public boolean accountExistsById(String id){
+		if(accounts.containsKey(id)){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 }
