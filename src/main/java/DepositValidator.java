@@ -1,5 +1,5 @@
 public class DepositValidator extends CommandValidator {
-    DepositValidator() {
+    public DepositValidator() {
     }
 
     @Override
@@ -17,11 +17,11 @@ public class DepositValidator extends CommandValidator {
         return doesDepositKeywordExist && isIdValid && isBalanceValid;
     }
 
-    public boolean doesDepositKeywordExistsInCommand(String command) {
+    private boolean doesDepositKeywordExistsInCommand(String command) {
         return command.toLowerCase().contains("deposit");
     }
 
-    public boolean isAmountToBeDepositedValid(String balance) {
+    private boolean isAmountToBeDepositedValid(String balance) {
 
         double amount;
         try {
