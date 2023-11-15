@@ -21,8 +21,8 @@ public class CreateAccountValidator extends CommandValidator {
             isCdBalanceValid = doesCdHaveValidBalance(parsedCommand[4]);
         }
 
-        boolean doesAccountExistInBank = does_account_already_exists_in_the_bank(parsedCommand[2]);
-        boolean isCreateKeywordPresent = create_keyword_is_present_in_command(parsedCommand[0]);
+        boolean doesAccountExistInBank = doesAccountAlreadyExistsInTheBank(parsedCommand[2]);
+        boolean isCreateKeywordPresent = createKeywordIsPresentInCommand(parsedCommand[0]);
         boolean isAccountTypeValid = super.isAccountTypeValid(parsedCommand[1]);
         boolean isIdValid = super.isIdValid(parsedCommand[2]);
         boolean isAprValid = super.isAprValid(parsedCommand[3]);
@@ -42,11 +42,11 @@ public class CreateAccountValidator extends CommandValidator {
         return !(initialBalance <= 0);
     }
 
-    public boolean create_keyword_is_present_in_command(String command) {
+    private boolean createKeywordIsPresentInCommand(String command) {
         return command.toLowerCase().contains("create");
     }
 
-    public boolean does_account_already_exists_in_the_bank(String id) {
+    private boolean doesAccountAlreadyExistsInTheBank(String id) {
         return bank.accountExistsById(id);
     }
 
