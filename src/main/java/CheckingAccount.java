@@ -1,6 +1,6 @@
-public class CheckingAccount extends GenericAccount{
+public class CheckingAccount extends GenericAccount {
 
-    CheckingAccount(double APR, String id){
+    CheckingAccount(double APR, String id) {
         super(0, APR, id);
     }
 
