@@ -1,5 +1,5 @@
-public class DepositValidator extends CommandValidator {
-    public DepositValidator() {
+public class DepositChecker extends CommandChecker {
+    public DepositChecker() {
     }
 
     @Override

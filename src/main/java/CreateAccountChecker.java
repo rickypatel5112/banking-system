@@ -1,6 +1,6 @@
-public class CreateAccountValidator extends CommandValidator {
+public class CreateAccountChecker extends CommandChecker {
 
-    CreateAccountValidator(Bank bank) {
+    CreateAccountChecker(Bank bank) {
         super(bank);
     }
 

@@ -1,11 +1,11 @@
-public class CommandValidator {
+public class CommandChecker {
     protected Bank bank;
 
-    public CommandValidator(Bank bank) {
+    public CommandChecker(Bank bank) {
         this.bank = bank;
     }
 
-    public CommandValidator() {
+    public CommandChecker() {
     }
 
     public boolean validate(String command) {

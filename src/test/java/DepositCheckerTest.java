@@ -4,13 +4,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class DepositValidatorTest {
+public class DepositCheckerTest {
 
-    private DepositValidator depositValidator;
+    private DepositChecker depositValidator;
 
     @BeforeEach
     public void setUp() {
-        depositValidator = new DepositValidator();
+        depositValidator = new DepositChecker();
     }
 
     @Test

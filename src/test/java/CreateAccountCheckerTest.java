@@ -4,15 +4,15 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class CreateAccountValidatorTest {
+public class CreateAccountCheckerTest {
 
     private Bank bank;
-    private CreateAccountValidator createAccountValidator;
+    private CreateAccountChecker createAccountValidator;
 
     @BeforeEach
     public void setUp() {
         bank = new Bank();
-        createAccountValidator = new CreateAccountValidator(bank);
+        createAccountValidator = new CreateAccountChecker(bank);
     }
 
     @Test
