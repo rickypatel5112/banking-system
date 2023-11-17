@@ -9,6 +9,18 @@ public class CommandChecker {
     }
 
     public boolean validate(String command) {
+
+        String[] parsedCommand = command.split(" ");
+
+        for (String keyword : parsedCommand) {
+            if (keyword.equalsIgnoreCase("create")) {
+                CreateAccountChecker createAccountChecker = new CreateAccountChecker(bank);
+                return createAccountChecker.validate(command);
+            } else if (keyword.equalsIgnoreCase("deposit")) {
+                DepositChecker depositChecker = new DepositChecker();
+                return depositChecker.validate(command);
+            }
+        }
         return false;
     }
 
@@ -48,5 +60,4 @@ public class CommandChecker {
 
         return !(apr < 0) && !(apr > 10);
     }
-
 }
