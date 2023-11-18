@@ -1,3 +1,5 @@
+package banking;
+
 public class DepositChecker extends CommandChecker {
     public DepositChecker() {
     }

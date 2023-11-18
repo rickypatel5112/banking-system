@@ -1,3 +1,5 @@
+package banking;
+
 public abstract class GenericAccount {
     private double balance;
     private double apr;

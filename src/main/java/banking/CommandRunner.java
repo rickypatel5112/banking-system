@@ -1,3 +1,5 @@
+package banking;
+
 public class CommandRunner {
     private Bank bank;
     private GenericAccount genericAccount;

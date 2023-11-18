@@ -1,3 +1,5 @@
+package banking;
+
 public class CreateAccountChecker extends CommandChecker {
 
     CreateAccountChecker(Bank bank) {

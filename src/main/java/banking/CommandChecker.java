@@ -1,3 +1,5 @@
+package banking;
+
 public class CommandChecker {
     protected Bank bank;
 
