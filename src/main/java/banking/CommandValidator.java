@@ -9,27 +9,26 @@ public class CommandValidator {
 
     public boolean validate(String command) {
 
+        CommandValidator validator;
+
         String[] parsedCommand = command.split(" ");
         String keyword = parsedCommand[0];
 
         if (keyword.equalsIgnoreCase("create")) {
-            CreateValidator createValidator = new CreateValidator(bank);
-            return createValidator.validate(command);
+            validator = new CreateValidator(bank);
         } else if (keyword.equalsIgnoreCase("deposit")) {
-            DepositValidator depositValidator = new DepositValidator(bank);
-            return depositValidator.validate(command);
+            validator = new DepositValidator(bank);
         } else if (keyword.equalsIgnoreCase("transfer")) {
-            TransferValidator transferValidator = new TransferValidator(bank);
-            return transferValidator.validate(command);
+            validator = new TransferValidator(bank);
         } else if (keyword.equalsIgnoreCase("withdraw")) {
-            WithdrawValidator withdrawValidator = new WithdrawValidator(bank);
-            return withdrawValidator.validate(command);
+            validator = new WithdrawValidator(bank);
         } else if (keyword.equalsIgnoreCase("pass")) {
-            PassTimeValidator passTimeValidator = new PassTimeValidator();
-            return passTimeValidator.validate(command);
+            validator = new PassTimeValidator(bank);
+        } else {
+            return false;
         }
 
-        return false;
+        return validator.validate(command);
     }
 
     public boolean isIdValid(String id) {

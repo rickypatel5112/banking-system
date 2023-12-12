@@ -34,31 +34,25 @@ public class StoredCommands {
         if (parsedCommand[0].equalsIgnoreCase("deposit") || parsedCommand[0].equalsIgnoreCase("withdraw")) {
             String id = parsedCommand[1];
 
-            if (!transactionalCommands.containsKey(id)) {
-                transactionalCommands.put(id, new ArrayList<>());
-                transactionalCommands.get(id).add(command);
-            } else {
-                transactionalCommands.get(id).add(command);
-            }
+            mapTransactionalCommandToId(id, command);
         } else if (parsedCommand[0].equalsIgnoreCase("transfer")) {
             String fromId = parsedCommand[1];
             String toId = parsedCommand[2];
 
-            if (!transactionalCommands.containsKey(fromId)) {
-                transactionalCommands.put(fromId, new ArrayList<>());
-                transactionalCommands.get(fromId).add(command);
-            } else {
-                transactionalCommands.get(fromId).add(command);
-            }
+            mapTransactionalCommandToId(fromId, command);
 
-            if (!transactionalCommands.containsKey(toId)) {
-                transactionalCommands.put(toId, new ArrayList<>());
-                transactionalCommands.get(toId).add(command);
-            } else {
-                transactionalCommands.get(toId).add(command);
-            }
+            mapTransactionalCommandToId(toId, command);
         }
 
+    }
+
+    private void mapTransactionalCommandToId(String id, String command) {
+        if (!transactionalCommands.containsKey(id)) {
+            transactionalCommands.put(id, new ArrayList<>());
+            transactionalCommands.get(id).add(command);
+        } else {
+            transactionalCommands.get(id).add(command);
+        }
     }
 
     public List<String> getOutputList() {

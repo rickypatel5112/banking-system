@@ -1,7 +1,12 @@
 package banking;
 
-public class PassTimeValidator {
+public class PassTimeValidator extends CommandValidator {
 
+    public PassTimeValidator(Bank bank) {
+        super(bank);
+    }
+
+    @Override
     public boolean validate(String command) {
         String[] parsedCommand = command.split(" ");
 

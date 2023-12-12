@@ -12,7 +12,7 @@ public class PassTimeValidatorTest {
 
     @BeforeEach
     public void setUp() {
-        passTimeValidator = new PassTimeValidator();
+        passTimeValidator = new PassTimeValidator(new Bank());
     }
 
     @Test
