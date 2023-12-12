@@ -1,9 +1,14 @@
 package banking;
 
+import java.util.List;
+
 public abstract class GenericAccount {
+    private final double apr;
+    private final String id;
     private double balance;
-    private double apr;
-    private String id;
+    private boolean canBeWithdrawn;
+    private int age = 0;
+    private List<String> transactionalCommands;
 
     public GenericAccount(double balance, double APR, String id) {
         this.balance = balance;
@@ -11,22 +16,34 @@ public abstract class GenericAccount {
         this.id = id;
     }
 
-    // Get account balance
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int months) {
+        age += months;
+    }
+
+    public boolean canBeWithdrawn() {
+        return canBeWithdrawn;
+    }
+
+    public void setCanBeWithdrawn(boolean canBeWithdrawn) {
+        this.canBeWithdrawn = canBeWithdrawn;
+    }
+
     public double getBalance() {
         return balance;
     }
 
-    // Get account APR value
     public double getApr() {
         return apr;
     }
 
-    // Deposit money into the account
     public void depositMoney(double amountDeposited) {
         balance += amountDeposited;
     }
 
-    // Withdraw money from the account
     public void withdrawMoney(double amountWithdrawn) {
         if (balance <= amountWithdrawn) {
             balance = 0;
@@ -35,8 +52,8 @@ public abstract class GenericAccount {
         }
     }
 
-    // Get accountId
     public String getId() {
         return id;
     }
+
 }

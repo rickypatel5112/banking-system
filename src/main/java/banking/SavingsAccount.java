@@ -2,7 +2,8 @@ package banking;
 
 public class SavingsAccount extends GenericAccount {
 
-    SavingsAccount(double APR, String id) {
-        super(0, APR, id);
+    SavingsAccount(String id, double apr) {
+        super(0, apr, id);
     }
+
 }

@@ -1,28 +1,34 @@
 package banking;
 
-public class CommandChecker {
+public class CommandValidator {
     protected Bank bank;
 
-    public CommandChecker(Bank bank) {
+    public CommandValidator(Bank bank) {
         this.bank = bank;
-    }
-
-    public CommandChecker() {
     }
 
     public boolean validate(String command) {
 
         String[] parsedCommand = command.split(" ");
+        String keyword = parsedCommand[0];
 
-        for (String keyword : parsedCommand) {
-            if (keyword.equalsIgnoreCase("create")) {
-                CreateAccountChecker createAccountChecker = new CreateAccountChecker(bank);
-                return createAccountChecker.validate(command);
-            } else if (keyword.equalsIgnoreCase("deposit")) {
-                DepositChecker depositChecker = new DepositChecker();
-                return depositChecker.validate(command);
-            }
+        if (keyword.equalsIgnoreCase("create")) {
+            CreateValidator createValidator = new CreateValidator(bank);
+            return createValidator.validate(command);
+        } else if (keyword.equalsIgnoreCase("deposit")) {
+            DepositValidator depositValidator = new DepositValidator(bank);
+            return depositValidator.validate(command);
+        } else if (keyword.equalsIgnoreCase("transfer")) {
+            TransferValidator transferValidator = new TransferValidator(bank);
+            return transferValidator.validate(command);
+        } else if (keyword.equalsIgnoreCase("withdraw")) {
+            WithdrawValidator withdrawValidator = new WithdrawValidator(bank);
+            return withdrawValidator.validate(command);
+        } else if (keyword.equalsIgnoreCase("pass")) {
+            PassTimeValidator passTimeValidator = new PassTimeValidator();
+            return passTimeValidator.validate(command);
         }
+
         return false;
     }
 
@@ -31,6 +37,8 @@ public class CommandChecker {
         if (id == null) {
             return false;
         } else if (id.length() != 8) {
+            return false;
+        } else if (!bank.accountExistsById(id)) {
             return false;
         }
 
@@ -62,4 +70,6 @@ public class CommandChecker {
 
         return !(apr < 0) && !(apr > 10);
     }
+
+
 }

@@ -15,7 +15,7 @@ public class GenericAccountTest {
 
     @BeforeEach
     public void setUp() {
-        checkingAccount = new CheckingAccount(APR, CHECKING_ID);
+        checkingAccount = new CheckingAccount(CHECKING_ID, APR);
     }
 
     @Test

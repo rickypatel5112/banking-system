@@ -1,8 +1,8 @@
 package banking;
 
-public class CreateAccountChecker extends CommandChecker {
+public class CreateValidator extends CommandValidator {
 
-    CreateAccountChecker(Bank bank) {
+    CreateValidator(Bank bank) {
         super(bank);
     }
 
@@ -26,11 +26,28 @@ public class CreateAccountChecker extends CommandChecker {
         boolean doesAccountExistInBank = doesAccountAlreadyExistsInTheBank(parsedCommand[2]);
         boolean isCreateKeywordPresent = createKeywordIsPresentInCommand(parsedCommand[0]);
         boolean isAccountTypeValid = super.isAccountTypeValid(parsedCommand[1]);
-        boolean isIdValid = super.isIdValid(parsedCommand[2]);
+        boolean isIdValid = isIdValid(parsedCommand[2]);
         boolean isAprValid = super.isAprValid(parsedCommand[3]);
 
         return !doesAccountExistInBank && isCreateKeywordPresent && isAccountTypeValid && isIdValid && isAprValid && isCdBalanceValid;
 
+    }
+
+    @Override
+    public boolean isIdValid(String id) {
+
+        if (id == null) {
+            return false;
+        } else if (id.length() != 8) {
+            return false;
+        }
+
+        for (char idChar : id.toCharArray()) {
+            if (!Character.isDigit(idChar)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean doesCdHaveValidBalance(String cdBalance) {
@@ -41,7 +58,7 @@ public class CreateAccountChecker extends CommandChecker {
             return false;
         }
 
-        return !(initialBalance <= 0);
+        return (initialBalance >= 1000 && initialBalance <= 10000);
     }
 
     private boolean createKeywordIsPresentInCommand(String command) {

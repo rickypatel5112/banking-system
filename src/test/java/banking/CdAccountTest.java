@@ -13,7 +13,7 @@ public class CdAccountTest {
 
     @BeforeEach
     public void setUp() {
-        cdAccount = new CdAccount(APR, CD_ID, BALANCE);
+        cdAccount = new CdAccount(CD_ID, APR, BALANCE);
     }
 
     @Test

@@ -16,7 +16,7 @@ public class BankTest {
     @BeforeEach
     public void setUp() {
         bank = new Bank();
-        checkingAccount = new CheckingAccount(APR, ID);
+        checkingAccount = new CheckingAccount(ID, APR);
     }
 
     @Test
@@ -34,7 +34,7 @@ public class BankTest {
     @Test
     public void two_accounts_are_added_to_the_bank() {
         bank.addAccount(checkingAccount);
-        bank.addAccount(new CheckingAccount(7.2, "6747654"));
+        bank.addAccount(new CheckingAccount("6747654", 7.2));
 
         assertEquals(2, bank.getAccounts().size());
     }

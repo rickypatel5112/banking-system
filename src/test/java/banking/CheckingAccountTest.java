@@ -12,7 +12,7 @@ public class CheckingAccountTest {
 
     @BeforeEach
     public void setUp() {
-        checkingAccount = new CheckingAccount(APR, ID);
+        checkingAccount = new CheckingAccount(ID, APR);
     }
 
     @Test

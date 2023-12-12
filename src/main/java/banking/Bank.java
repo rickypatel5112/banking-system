@@ -1,13 +1,13 @@
 package banking;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Bank {
-    private Map<String, GenericAccount> accounts;
+    private final Map<String, GenericAccount> accounts;
 
     public Bank() {
-        accounts = new HashMap<>();
+        accounts = new LinkedHashMap<>();
     }
 
     // Returns all the accounts in the bank
@@ -38,6 +38,14 @@ public class Bank {
     public boolean accountExistsById(String id) {
         return accounts.containsKey(id);
     }
+
+    public String getAccountType(String id) {
+        return accounts.get(id).getClass().getName();
+    }
+
+//    public void removeAccount(String id) {
+//        accounts.remove(id);
+//    }
 }
 
 

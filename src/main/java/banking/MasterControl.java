@@ -4,24 +4,25 @@ import java.util.List;
 
 public class MasterControl {
 
-    private CommandChecker commandChecker;
-    private CommandRunner commandRunner;
-    private StoredCommands storedCommands;
+    private final CommandValidator commandValidator;
+    private final CommandProcessor commandProcessor;
+    private final StoredCommands storedCommands;
 
-    public MasterControl(CommandChecker commandChecker, CommandRunner commandRunner, StoredCommands storedCommands) {
-        this.commandChecker = commandChecker;
-        this.commandRunner = commandRunner;
+    public MasterControl(CommandValidator commandValidator, CommandProcessor commandProcessor, StoredCommands storedCommands) {
+        this.commandValidator = commandValidator;
+        this.commandProcessor = commandProcessor;
         this.storedCommands = storedCommands;
     }
 
     public List<String> start(List<String> input) {
         for (String command : input) {
-            if (commandChecker.validate(command)) {
-                commandRunner.runCommand(command);
+            if (commandValidator.validate(command)) {
+                commandProcessor.runCommand(command);
+                storedCommands.storeTransactionalCommand(command);
             } else {
-                storedCommands.store(command);
+                storedCommands.storeInvalidCommand(command);
             }
         }
-        return storedCommands.getStoredCommands();
+        return storedCommands.getOutputList();
     }
 }
