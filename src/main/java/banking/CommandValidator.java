@@ -34,11 +34,7 @@ public class CommandValidator {
 
     public boolean isIdValid(String id) {
 
-        if (id == null) {
-            return false;
-        } else if (id.length() != 8) {
-            return false;
-        } else if (!bank.accountExistsById(id)) {
+        if (id == null || id.length() != 8 || !bank.accountExistsById(id)) {
             return false;
         }
 

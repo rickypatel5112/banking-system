@@ -68,26 +68,7 @@ public class PassTimeProcessor {
         }
     }
 
-//    private void accountRemovalAndMinimumBalanceOperations(int months) {
-//        Iterator<String> iterator = bank.getAccounts().keySet().iterator();
-//
-//        while (iterator.hasNext()) {
-//            String accountId = iterator.next();
-//            double balance = bank.getAccount(accountId).getBalance();
-//
-//            for (int i = 0; i < months; i++) {
-//                if (balance == 0) {
-//                    iterator.remove();
-//                    break;
-//                } else if (balance < 100) {
-//                    bank.getAccount(accountId).withdrawMoney(25);
-//                }
-//            }
-//
-//        }
-//    }
-
-    public void calculateApr() {
+    private void calculateApr() {
 
         for (String accountId : bank.getAccounts().keySet()) {
             double apr = bank.getAccount(accountId).getApr();

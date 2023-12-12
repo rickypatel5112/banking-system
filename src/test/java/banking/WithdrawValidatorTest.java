@@ -39,6 +39,14 @@ public class WithdrawValidatorTest {
     }
 
     @Test
+    public void case_insensitive_withdraw_command() {
+
+        boolean actual = withdrawValidator.validate("WitHDRaw 12345678 10");
+
+        assertTrue(actual);
+    }
+
+    @Test
     public void withdraw_keyword_is_misspelled_in_command() {
 
         boolean actual = withdrawValidator.validate("Withddaw 12458584 400");
@@ -271,5 +279,36 @@ public class WithdrawValidatorTest {
         assertTrue(firstWithdrawal);
         assertFalse(secondWithdrawal);
     }
+
+    @Test
+    public void withdrawing_amount_more_than_balance_in_cd_account() {
+
+        passTimeProcessor.processTime("Pass 12");
+
+        boolean actual = withdrawValidator.validate("Withdraw 12345670 5000");
+
+        assertTrue(actual);
+    }
+
+    @Test
+    public void withdrawing_amount_less_than_balance_in_cd_account() {
+
+        passTimeProcessor.processTime("Pass 12");
+
+        boolean actual = withdrawValidator.validate("Withdraw 12345670 30");
+
+        assertFalse(actual);
+    }
+
+    @Test
+    public void withdrawing_amount_is_equal_to_the_balance_in_cd_account() {
+
+        passTimeProcessor.processTime("Pass 12");
+
+        boolean actual = withdrawValidator.validate("Withdraw 12345670 1718.1923941880589");
+
+        assertTrue(actual);
+    }
+
 
 }

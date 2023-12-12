@@ -1,16 +1,13 @@
 package banking;
 
-import java.util.List;
-
 public abstract class GenericAccount {
     private final double apr;
     private final String id;
     private double balance;
     private boolean canBeWithdrawn;
     private int age = 0;
-    private List<String> transactionalCommands;
 
-    public GenericAccount(double balance, double APR, String id) {
+    protected GenericAccount(double balance, double APR, String id) {
         this.balance = balance;
         this.apr = APR;
         this.id = id;

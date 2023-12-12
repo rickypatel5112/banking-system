@@ -333,6 +333,18 @@ public class CreateValidatorTest {
     }
 
     @Test
+    public void creating_cd_account_with_initial_balance_as_10000() {
+        boolean actual = createValidator.validate("create cd 58482949 4.5 10000");
+        assertTrue(actual);
+    }
+
+    @Test
+    public void creating_cd_account_with_initial_balance_as_1000() {
+        boolean actual = createValidator.validate("create cd 58482949 4.5 1000");
+        assertTrue(actual);
+    }
+
+    @Test
     public void creating_checking_account_with_initial_balance_less_than_0() {
         boolean actual = createValidator.validate("create checking 48315594 6.6 -200");
         assertFalse(actual);
@@ -353,6 +365,12 @@ public class CreateValidatorTest {
     @Test
     public void creating_cd_account_with_initial_balance_as_0() {
         boolean actual = createValidator.validate("create cd 48315594 6.6 0");
+        assertFalse(actual);
+    }
+
+    @Test
+    public void creating_cd_account_with_alphanumeric_balance() {
+        boolean actual = createValidator.validate("create cd 48315594 6.6 10o0");
         assertFalse(actual);
     }
 

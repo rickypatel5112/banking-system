@@ -96,13 +96,4 @@ public class StoredCommands {
         return outputList;
     }
 
-    public boolean containsInvalidCommand(String command) {
-        return invalidCommands.contains(command);
-    }
-
-
-//    public List<String> getTransactionalCommands() {
-//        return transactionalCommands;
-//    }
-
 }

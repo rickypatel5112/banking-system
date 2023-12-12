@@ -11,9 +11,8 @@ public class CreateValidator extends CommandValidator {
 
         String[] parsedCommand = command.split(" ");
 
-        if (!command.toLowerCase().contains("cd") && parsedCommand.length != 4) {
-            return false;
-        } else if (command.toLowerCase().contains("cd") && parsedCommand.length != 5) {
+        if ((!command.toLowerCase().contains("cd") && parsedCommand.length != 4) ||
+                (command.toLowerCase().contains("cd") && parsedCommand.length != 5)) {
             return false;
         }
 
@@ -36,9 +35,7 @@ public class CreateValidator extends CommandValidator {
     @Override
     public boolean isIdValid(String id) {
 
-        if (id == null) {
-            return false;
-        } else if (id.length() != 8) {
+        if (id == null || id.length() != 8) {
             return false;
         }
 

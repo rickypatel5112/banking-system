@@ -32,12 +32,12 @@ public class TransferValidator extends CommandValidator {
             return false;
         }
 
-        if (bank.accountExistsById(transferFromId) && bank.accountExistsById(transferToId)) {
-            if (bank.getAccountType(transferFromId).equals("banking.CdAccount")
-                    || bank.getAccountType(transferToId).equals("banking.CdAccount")) {
-                return false;
-            }
+        if (bank.accountExistsById(transferFromId) && bank.accountExistsById(transferToId)
+                && (bank.getAccountType(transferFromId).equals("banking.CdAccount")
+                || bank.getAccountType(transferToId).equals("banking.CdAccount"))) {
+            return false;
         }
+
 
         DepositValidator depositValidator = new DepositValidator(bank);
         boolean canDeposit = depositValidator.validate("deposit " + transferToId + " " + amount);

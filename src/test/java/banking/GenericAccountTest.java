@@ -47,6 +47,23 @@ public class GenericAccountTest {
     }
 
     @Test
+    public void withdrawing_amount_is_more_than_balance_in_account() {
+        checkingAccount.depositMoney(10);
+        checkingAccount.withdrawMoney(50);
+
+        assertEquals(0, checkingAccount.getBalance());
+    }
+
+    @Test
+    public void withdrawing_amount_is_equal_to_the_balance_in_account() {
+        checkingAccount.depositMoney(10);
+        checkingAccount.withdrawMoney(10);
+
+        assertEquals(0, checkingAccount.getBalance());
+    }
+
+
+    @Test
     public void depositing_twice_in_same_account_works_as_expected() {
         checkingAccount.depositMoney(10.01);
         checkingAccount.depositMoney(100.00);

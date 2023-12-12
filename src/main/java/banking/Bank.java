@@ -43,9 +43,6 @@ public class Bank {
         return accounts.get(id).getClass().getName();
     }
 
-//    public void removeAccount(String id) {
-//        accounts.remove(id);
-//    }
 }
 
 

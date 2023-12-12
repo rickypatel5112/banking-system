@@ -99,6 +99,26 @@ public class MasterControlTest {
     }
 
     @Test
+    public void sample_blackboard_test_case() {
+        input.add("Create savings 12345678 0.6");
+        input.add("Deposit 12345678 700");
+        input.add("Deposit 12345678 5000");
+        input.add("creAte cHecKing 98765432 0.01");
+        input.add("Deposit 98765432 300");
+        input.add("Transfer 98765432 12345678 300");
+        input.add("Pass 1");
+        input.add("Create cd 23456789 1.2 2000");
+
+        List<String> actual = masterControl.start(input);
+
+        List<String> expected = Arrays.asList("Savings 12345678 1000.50 0.60", "Deposit 12345678 700",
+                "Transfer 98765432 12345678 300", "Cd 23456789 2000.00 1.20", "Deposit 12345678 5000");
+
+        assertEquals(actual, expected);
+
+    }
+
+    @Test
     public void document_provided_test_case() {
         input.add("Create savings 12345678 0.6");
         input.add("Deposit 12345678 700");
